@@ -11,6 +11,18 @@ This repository contains the Visual Studio Code extension and the Command Line I
 
 ---
 
+## 📥 How to Download
+
+Before installing, you need to get the files onto your computer:
+
+1. **Option A (Recommended)**: Click the green **"Code"** button at the top of this page and select **"Download ZIP"**. Extract the ZIP folder once downloaded.
+2. **Option B (For Git users)**: Open your terminal and run:
+   ```bash
+   git clone https://github.com/Iyed2410/algorithme_executable.git
+   ```
+
+---
+
 ## 🛠️ Required Installation (Prerequisites)
 
 To make the extension and global command work, your system needs Node.js.
