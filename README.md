@@ -24,12 +24,11 @@ Si vous ne l'avez pas déjà :
 
 Une fois Node.js installé, vous devez récupérer le code source localement ou depuis ce dépôt et l'enregistrer dans votre système. 
 
-Ouvrez l'Invite de Commande (`cmd`) en tant qu'administrateur (ou PowerShell) et tapez :
+Ouvrez l'Invite de Commande (`cmd`) ou PowerShell dans le dossier que vous venez de télécharger (là où se trouve ce fichier README) et tapez :
 
 ```bash
-npm install -g chemin/vers/le/dossier/du/projet/algo-tn-vscode
+npm install -g .
 ```
-> *(Remplacez "chemin/vers/le/dossier..." par le chemin exact où se trouve le code source de l'extension sur votre ordinateur)*
 
 **Vérification :**
 Fermez le terminal, ouvrez-en un nouveau et tapez :
