@@ -269,6 +269,33 @@ function getBuiltins() {
             }
             return null;
         },
+        'afficher_fichier': (args, line, workDir) => {
+            expectArgCount('afficher_fichier', args, 1, line);
+            const filePath = String(args[0]);
+            const fullPath = path.isAbsolute(filePath) ? filePath : path.join(workDir, filePath);
+            if (!fs.existsSync(fullPath)) {
+                throw new environment_1.AlgoRuntimeError(`Fichier non trouvé: '${fullPath}'`, line);
+            }
+            console.log(`\n📄 Contenu de : ${filePath}`);
+            console.log('='.repeat(filePath.length + 15));
+            const isBinary = filePath.toLowerCase().endsWith('.dat');
+            if (isBinary) {
+                try {
+                    const raw = fs.readFileSync(fullPath, 'utf-8');
+                    const content = JSON.parse(raw);
+                    console.log(JSON.stringify(content, null, 2));
+                }
+                catch {
+                    console.log("(Fichier binaire vide ou corrompu)");
+                }
+            }
+            else {
+                const content = fs.readFileSync(fullPath, 'utf-8');
+                console.log(content);
+            }
+            console.log('='.repeat(filePath.length + 15) + '\n');
+            return null;
+        },
     };
 }
 function expectArgCount(name, args, expected, line) {
