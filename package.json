@@ -1,0 +1,73 @@
+{
+    "name": "algorithme-tn",
+    "displayName": "Algorithme-tn",
+    "description": "Pseudocode utilisé au lycée en Tunisie — avec interpréteur intégré",
+    "version": "0.1.0",
+    "icon": "images/icon.png",
+    "engines": {
+        "vscode": "^1.74.0"
+    },
+    "publisher": "les-profs-d-info",
+    "categories": [
+        "Programming Languages"
+    ],
+    "bin": {
+        "algo": "./out/test-runner.js"
+    },
+    "main": "./out/extension.js",
+    "activationEvents": [
+        "onLanguage:algo"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "algo",
+            "aliases": ["Algorithme en Pseudocode", "algo"],
+            "extensions": [".algo",".alg"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "algo",
+            "scopeName": "source.algo",
+            "path": "./syntaxes/algo.tmLanguage.json",
+            "embeddedLanguages": {
+                "meta.embedded.block.python": "python",
+                "meta.embedded.block.javascript": "javascript"
+              }            
+        }],
+        "snippets": [{
+                "language": "algo",
+                "path": "./snippets/snippets.json"
+        }],
+        "commands": [{
+            "command": "algorithme-tn.run",
+            "title": "Exécuter l'algorithme",
+            "icon": "$(play)"
+        }],
+        "keybindings": [{
+            "command": "algorithme-tn.run",
+            "key": "f5",
+            "when": "editorLangId == algo"
+        }],
+        "menus": {
+            "editor/title": [{
+                "command": "algorithme-tn.run",
+                "when": "editorLangId == algo",
+                "group": "navigation"
+            }]
+        }
+    },
+    "scripts": {
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "vscode:prepublish": "npm run compile"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "@types/vscode": "^1.74.0",
+        "typescript": "^5.0.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/romoez/algo-tn-vscode.git"
+    }
+}
