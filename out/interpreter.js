@@ -162,9 +162,27 @@ class Interpreter {
             }
         }
         else if (target.type === 'FieldAccess') {
-            const obj = await this.evaluate(target.object, env);
+            let obj = await this.evaluate(target.object, env);
+            // Auto-create object if it doesn't exist
+            if (obj === null || obj === undefined || typeof obj !== 'object') {
+                if (target.object.type === 'Identifier') {
+                    const name = target.object.name;
+                    obj = {};
+                    if (env.hasLocal(name)) {
+                        env.set(name, obj);
+                    }
+                    else {
+                        env.define(name, obj);
+                    }
+                }
+                else if (target.object.type === 'ArrayAccess' || target.object.type === 'FieldAccess') {
+                    await this.assignTarget(target.object, {}, env);
+                    obj = await this.evaluate(target.object, env);
+                }
+            }
             if (obj && typeof obj === 'object') {
-                obj[target.field] = value;
+                const fieldName = target.field.toLowerCase();
+                obj[fieldName] = value;
             }
         }
     }
@@ -392,9 +410,14 @@ class Interpreter {
         }
         const output = parts.join('');
         this.io.write(output);
-        if (node.newline) {
-            this.io.write('\n');
-        }
+        // User requested: écrire_nl should ONLY jump to next line when using files.
+        // For console, they prefer manual control or matching python's print (which usually has newline, 
+        // but the user specifically said: "écrire_nl should only be used with files... to use print like python you can use écrire").
+        // Interpreting this as: écrire and écrire_nl are the same for console (no auto newline).
+        // Actually, usually python's print DOES newline. If they say "to use print like python use écrire", 
+        // maybe écrire adds newline? No, in conventions écrire is no-newline. 
+        // Re-reading: "écrire_nl should only be used with files it write a line and then jump to the next one... you can use écrire"
+        // Okay, I will make écrire_nl NOT add newline to console.
     }
     formatValue(val) {
         if (val === null || val === undefined)
@@ -448,13 +471,8 @@ class Interpreter {
                 }
                 return undefined;
             }
-            case 'FieldAccess': {
-                const fa = node;
-                const obj = await this.evaluate(fa.object, env);
-                if (obj && typeof obj === 'object')
-                    return obj[fa.field];
-                return undefined;
-            }
+            case 'FieldAccess':
+                return this.evalFieldAccess(node, env);
             case 'FunctionCallExpr':
                 return this.evalFunctionCall(node, env);
             default:
@@ -503,6 +521,14 @@ class Interpreter {
             default:
                 throw new environment_1.AlgoRuntimeError(`Opérateur inconnu: '${op}'`, node.line);
         }
+    }
+    async evalFieldAccess(node, env) {
+        const obj = await this.evaluate(node.object, env);
+        if (!obj || typeof obj !== 'object') {
+            return undefined;
+        }
+        const fieldName = node.field.toLowerCase();
+        return obj[fieldName];
     }
     async evalUnary(node, env) {
         const val = await this.evaluate(node.operand, env);

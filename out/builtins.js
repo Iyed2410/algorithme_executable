@@ -197,7 +197,8 @@ function getBuiltins() {
             }
             else if (mode === 'w' || mode === 'wb') {
                 // Create/truncate
-                fs.writeFileSync(fullPath, '', 'utf-8');
+                const fd = fs.openSync(fullPath, 'w');
+                fs.closeSync(fd);
                 if (isBinary) {
                     handle.content = [];
                     handle.contentPos = 0;
