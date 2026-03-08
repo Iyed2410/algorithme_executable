@@ -1,75 +1,43 @@
 # Algorithm Tunisia - VS Code Extension & CLI
 
-This repository contains the Visual Studio Code extension and the Command Line Interface (CLI) to execute code following the official algorithmic conventions taught in Tunisian high schools (2024-2025 Program).
+This repository contains the source code for the "Algorithme-tn" Visual Studio Code extension and its command-line interpreter.
 
-## Features 🚀
+## Project Structure
 
-- **Syntax Highlighting**: Full support for `.algo` files (French keywords, predefined functions, operators).
-- **Integrated Interpreter**: Run your code directly by pressing a button without needing external tools.
-- **File Manipulation**: Fully supports opening (`ouvrir`), reading/writing (`lire`, `écrire_nl`), array management (`tab`), and binary files (`.dat`) according to the official curriculum.
-- **Global Execution**: Launch your algorithms from any folder on your computer using the `algo` command.
+- `src/`: TypeScript source code for the lexer, parser, interpreter, and VS Code extension.
+- `out/`: Compiled JavaScript code.
+- `syntaxes/`: TextMate grammar for `.algo` files.
+- `snippets/`: Code snippets for common algorithmic structures.
+- `test/`: Test files and examples.
+- `images/`: Icons and screenshots.
 
----
+## 🚀 Installation & Setup
 
-## 📥 How to Download
+### Pour les Étudiants (Configuration Rapide)
+1. **Télécharger l'Installer** : Allez dans les "Releases" sur GitHub et téléchargez le dossier `installer`.
+2. **Exécuter l'Installation** : 
+   - Option A : Exécuter **`setup_algo_tn.exe`** (Installer Windows standard).
+   - Option B : Clic-droit sur **`setup.ps1`** et choisir **Exécuter avec PowerShell** (nécessite des droits admin).
+3. **Terminer** : L'installer ajoutera la commande `algo` à votre système et installable l'extension VS Code automatiquement.
 
-Before installing, you need to get the files onto your computer:
+### Pour les Développeurs (Générer le setup.exe)
+Si vous voulez recréer l'installer vous-même :
+1. Installez [Inno Setup](https://jrsoftware.org/isdl.php).
+2. Ouvrez le fichier [setup.iss](file:///d:/iyed/Projects/algo-tn-vscode/installer/setup.iss) dans Inno Setup.
+3. Cliquez sur **Compile**. Un fichier `setup_algo_tn.exe` sera généré dans le dossier `installer/Output`.
 
-1. **Option A (Recommended)**: Click the green **"Code"** button at the top of this page and select **"Download ZIP"**. Extract the ZIP folder once downloaded.
-2. **Option B (For Git users)**: Open your terminal and run:
-   ```bash
-   git clone https://github.com/Iyed2410/algorithme_executable.git
-   ```
+## 🛠 Utilisation
 
----
+### Extension VS Code
+- Ouvrez n'importe quel fichier `.algo` ou `.alg`.
+- Appuyez sur **F5** ou cliquez sur le bouton **Play** en haut à droite.
 
-## 🛠️ Required Installation (Prerequisites)
+### Commande CLI Globale
+- Utilisez la commande `algo` dans n'importe quel terminal :
+  ```bash
+  algo mon_exercice.algo
+  ```
 
-To make the extension and global command work, your system needs Node.js.
-If you don't have it yet:
-1. Download and install **Node.js** from [nodejs.org](https://nodejs.org/).
-2. During installation, leave all default options (make sure "Add to PATH" is checked).
-
----
-
-## 📥 1. Global Command Installation (CLI)
-
-Once Node.js is installed, you need to register the `algo` command in your system.
-
-Open the Command Prompt (`cmd`) or PowerShell in the folder you just downloaded (where this README file is located) and type:
-
-```bash
-npm install -g .
-```
-
-**Verification:**
-Close the terminal, open a new one, and type:
-```bash
-algo
-```
-If a usage message appears (`Usage: node out/test-runner.js <file.algo>`), the installation was successful!
-You can now run any algorithm file from any folder: `algo my_program.algo`
-
----
-
-## 💻 2. Visual Studio Code Extension Installation
-
-The extension provides syntax highlighting, snippets, and the **F5** key (or Play button) to run your code directly from the editor.
-
-1. **Download** the `algorithme-tn-0.1.0.vsix` file provided in this release/repository.
-2. Open **Visual Studio Code**.
-3. Go to the **Extensions** tab (square icon on the left) or press `Ctrl+Shift+X`.
-4. Click on the **three dots `...`** at the top right of the extensions panel.
-5. Select **Install from VSIX...**.
-6. Find and select the `algorithme-tn-0.1.0.vsix` file you just downloaded.
-7. (**Optional**): If VS Code asks, click "Reload Window".
-
----
-
-## 📝 How to use it?
-
-1. Create a new folder for your exercises.
-2. Create a file ending with **`.algo`** (e.g., `exercise1.algo`).
-3. Write your code in pseudo-code according to the convention (e.g., `algorithme test\ndébut\nécrire("Hello World!")\nfin`).
-4. **Press `F5`** on your keyboard, or click the Play button at the top right.
-5. The VS Code Integrated Terminal will open, ask for your inputs `Saisir X: `, and display your results!
+## 📖 Nouvelles Fonctions
+- `Afficher_Fichier("chemin")` : Affiche le contenu des fichiers texte ou binaires (`.dat`) directement dans le terminal avec une jolie mise en forme.
+- `écrire_nl` (Console) : Ne saute plus de ligne automatiquement en console (comportement d'écriture standard).
