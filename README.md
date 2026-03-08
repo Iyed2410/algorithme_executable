@@ -31,7 +31,7 @@ This repository contains the source code for the "Algorithme-tn" Visual Studio C
   ```
 
 ### Exemple de Résultat
-![Aperçu du Code](file:///d:/iyed/Projects/algo-tn-vscode/images/code.png)
+![Aperçu du Code](images/code.png)
 
 ```text
 algo test/test.algo
