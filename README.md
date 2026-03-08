@@ -49,7 +49,3 @@ le contenue du ficher text est: 69
 le contenue du ficher text est: 72
 le contenue du ficher text est: 94
 ```
-
-## 📖 Nouvelles Fonctions
-- `Afficher_Fichier("chemin")` : Affiche le contenu des fichiers texte ou binaires (`.dat`) directement dans le terminal avec une jolie mise en forme.
-- `écrire_nl` (Console) : Ne saute plus de ligne automatiquement en console (comportement d'écriture standard).
