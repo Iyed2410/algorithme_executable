@@ -14,7 +14,7 @@ Source: "algo.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "algorithme-tn-0.1.0.vsix"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{group}\Install VS Code Extension"; Filename: "{cmd}"; Parameters: "/c code --install-extension ""{app}\algorithme-tn-0.1.0.vsix"""; Flags: shellexec
+Name: "{group}\Install VS Code Extension"; Filename: "{cmd}"; Parameters: "/c code --install-extension ""{app}\algorithme-tn-0.1.0.vsix"""
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
