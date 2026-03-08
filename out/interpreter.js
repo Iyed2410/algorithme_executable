@@ -409,15 +409,7 @@ class Interpreter {
             parts.push(this.formatValue(val));
         }
         const output = parts.join('');
-        this.io.write(output);
-        // User requested: écrire_nl should ONLY jump to next line when using files.
-        // For console, they prefer manual control or matching python's print (which usually has newline, 
-        // but the user specifically said: "écrire_nl should only be used with files... to use print like python you can use écrire").
-        // Interpreting this as: écrire and écrire_nl are the same for console (no auto newline).
-        // Actually, usually python's print DOES newline. If they say "to use print like python use écrire", 
-        // maybe écrire adds newline? No, in conventions écrire is no-newline. 
-        // Re-reading: "écrire_nl should only be used with files it write a line and then jump to the next one... you can use écrire"
-        // Okay, I will make écrire_nl NOT add newline to console.
+        this.io.write(output + '\n');
     }
     formatValue(val) {
         if (val === null || val === undefined)

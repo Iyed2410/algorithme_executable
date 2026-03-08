@@ -19,41 +19,59 @@
         "onLanguage:algo"
     ],
     "contributes": {
-        "languages": [{
-            "id": "algo",
-            "aliases": ["Algorithme en Pseudocode", "algo"],
-            "extensions": [".algo",".alg"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "algo",
-            "scopeName": "source.algo",
-            "path": "./syntaxes/algo.tmLanguage.json",
-            "embeddedLanguages": {
-                "meta.embedded.block.python": "python",
-                "meta.embedded.block.javascript": "javascript"
-              }            
-        }],
-        "snippets": [{
+        "languages": [
+            {
+                "id": "algo",
+                "aliases": [
+                    "Algorithme en Pseudocode",
+                    "algo"
+                ],
+                "extensions": [
+                    ".algo",
+                    ".alg"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "algo",
+                "scopeName": "source.algo",
+                "path": "./syntaxes/algo.tmLanguage.json",
+                "embeddedLanguages": {
+                    "meta.embedded.block.python": "python",
+                    "meta.embedded.block.javascript": "javascript"
+                }
+            }
+        ],
+        "snippets": [
+            {
                 "language": "algo",
                 "path": "./snippets/snippets.json"
-        }],
-        "commands": [{
-            "command": "algorithme-tn.run",
-            "title": "Exécuter l'algorithme",
-            "icon": "$(play)"
-        }],
-        "keybindings": [{
-            "command": "algorithme-tn.run",
-            "key": "f5",
-            "when": "editorLangId == algo"
-        }],
-        "menus": {
-            "editor/title": [{
+            }
+        ],
+        "commands": [
+            {
                 "command": "algorithme-tn.run",
-                "when": "editorLangId == algo",
-                "group": "navigation"
-            }]
+                "title": "Exécuter l'algorithme",
+                "icon": "$(play)"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "algorithme-tn.run",
+                "key": "f5",
+                "when": "editorLangId == algo"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "algorithme-tn.run",
+                    "when": "editorLangId == algo",
+                    "group": "navigation"
+                }
+            ]
         }
     },
     "scripts": {
@@ -64,6 +82,7 @@
     "devDependencies": {
         "@types/node": "^18.0.0",
         "@types/vscode": "^1.74.0",
+        "pkg": "^5.8.1",
         "typescript": "^5.0.0"
     },
     "repository": {
