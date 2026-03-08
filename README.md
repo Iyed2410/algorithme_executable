@@ -14,17 +14,9 @@ This repository contains the source code for the "Algorithme-tn" Visual Studio C
 ## 🚀 Installation & Setup
 
 ### Pour les Étudiants (Configuration Rapide)
-1. **Télécharger l'Installer** : Allez dans les "Releases" sur GitHub et téléchargez le dossier `installer`.
-2. **Exécuter l'Installation** : 
-   - Option A : Exécuter **`setup_algo_tn.exe`** (Installer Windows standard).
-   - Option B : Clic-droit sur **`setup.ps1`** et choisir **Exécuter avec PowerShell** (nécessite des droits admin).
-3. **Terminer** : L'installer ajoutera la commande `algo` à votre système et installable l'extension VS Code automatiquement.
-
-### Pour les Développeurs (Générer le setup.exe)
-Si vous voulez recréer l'installer vous-même :
-1. Installez [Inno Setup](https://jrsoftware.org/isdl.php).
-2. Ouvrez le fichier [setup.iss](file:///d:/iyed/Projects/algo-tn-vscode/installer/setup.iss) dans Inno Setup.
-3. Cliquez sur **Compile**. Un fichier `setup_algo_tn.exe` sera généré dans le dossier `installer/Output`.
+1. **Télécharger l'Installer** : Allez dans la section **[Releases](https://github.com/Iyed2410/algorithme_executable/releases)** sur GitHub.
+2. **Exécuter l'Installation** : Téléchargez et lancez **`setup_algo_tn.exe`**.
+3. **Terminer** : L'installer configurera automatiquement la commande `algo` et l'extension VS Code sur votre ordinateur.
 
 ## 🛠 Utilisation
 
