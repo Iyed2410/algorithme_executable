@@ -1,5 +1,13 @@
 # PowerShell Installer for Algo-TN
-# Runs with Administrator privileges to update system PATH
+# This script requires Administrator privileges
+
+# Self-elevate the script if not running as Admin
+if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host "Demande des droits d'administrateur..." -ForegroundColor Yellow
+    $Arguments = "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`""
+    Start-Process powershell.exe -ArgumentList $Arguments -Verb RunAs
+    exit
+}
 
 Write-Host "--- Installation de Algorithme-TN ---" -ForegroundColor Cyan
 
