@@ -14,7 +14,7 @@ Source: "algo.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "algorithme-tn-0.1.0.vsix"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{group}\Install VS Code Extension"; Filename: "code"; Parameters: "--install-extension ""{app}\algorithme-tn-0.1.0.vsix"""
+Name: "{group}\Install VS Code Extension"; Filename: "{cmd}"; Parameters: "/c code --install-extension ""{app}\algorithme-tn-0.1.0.vsix"""; Flags: shellexec
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
@@ -34,4 +34,4 @@ begin
 end;
 
 [Run]
-Filename: "code"; Parameters: "--install-extension ""{app}\algorithme-tn-0.1.0.vsix"""; Flags: nowait postinstall skipifsilent; Description: "Installer l'extension dans VS Code (nécessite VS Code installé)"
+Filename: "{cmd}"; Parameters: "/c code --install-extension ""{app}\algorithme-tn-0.1.0.vsix"""; Flags: shellexec nowait postinstall skipifsilent; Description: "Installer l'extension dans VS Code (nécessite VS Code installé)"
