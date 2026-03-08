@@ -30,6 +30,26 @@ This repository contains the source code for the "Algorithme-tn" Visual Studio C
   algo mon_exercice.algo
   ```
 
+### Exemple de Résultat
+![Aperçu du Code](file:///d:/iyed/Projects/algo-tn-vscode/images/code.png)
+
+```text
+algo test/test.algo
+Saisir N: 
+📥 N = 5
+Case n°1: 72
+Case n°2: 35
+Case n°3: 94
+Case n°4: 8
+Case n°5: 69
+le contenue du ficher bin est: [8, 35, 69, 72, 94]
+le contenue du ficher text est: 8
+le contenue du ficher text est: 35
+le contenue du ficher text est: 69
+le contenue du ficher text est: 72
+le contenue du ficher text est: 94
+```
+
 ## 📖 Nouvelles Fonctions
 - `Afficher_Fichier("chemin")` : Affiche le contenu des fichiers texte ou binaires (`.dat`) directement dans le terminal avec une jolie mise en forme.
 - `écrire_nl` (Console) : Ne saute plus de ligne automatiquement en console (comportement d'écriture standard).
